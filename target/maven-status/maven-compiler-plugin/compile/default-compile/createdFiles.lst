@@ -1,0 +1,6 @@
+pl/coderslab/controller/EncodingFilter.class
+pl/coderslab/model/DbUtil.class
+pl/coderslab/model/SolutionDAO.class
+pl/coderslab/controller/MainServlet.class
+pl/coderslab/model/SchoolConn.class
+pl/coderslab/model/Solution.class
