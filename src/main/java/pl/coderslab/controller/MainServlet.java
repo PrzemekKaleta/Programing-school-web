@@ -32,17 +32,17 @@ public class MainServlet extends HttpServlet {
         try {
             Connection connection = SchoolConn.getConnection();
 
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM school.solutions");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM solutions");
 
 
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
+            while (rs.next()){
                 int a = rs.getInt("solutuion_id");
                 int b = rs.getInt("author_id");
                 String c = rs.getString("body");
-                System.out.println(a + "   " + b + "   " + c);
 
+                System.out.println("id solution: " + a + " , id author: " + b + " , solution is: " + c);
             }
 
         } catch (SQLException e) {
