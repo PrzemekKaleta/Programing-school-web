@@ -16,11 +16,15 @@ public class DbUtil {
         if(ds == null) {
             try {
                 Context ctx = new InitialContext();
-
+                Class.forName("com.mysql.jdbc.Driver");
                 Context initContext = new InitialContext();
                 Context envContext  = (Context)initContext.lookup("java:/comp/env");
                 ds = (DataSource)envContext.lookup("jdbc/school");
             } catch (NamingException e) {
-                e.printStackTrace();}}
+                e.printStackTrace();
+            } catch (ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
         return ds;}
 }

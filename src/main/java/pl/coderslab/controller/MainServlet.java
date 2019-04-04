@@ -1,9 +1,6 @@
 package pl.coderslab.controller;
 
-import pl.coderslab.model.SchoolConn;
-import pl.coderslab.model.Solution;
-import pl.coderslab.model.SolutionDAO;
-import pl.coderslab.model.Test_Data_From_DB;
+import pl.coderslab.model.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,13 +21,15 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String numbersSolution = getServletContext().getInitParameter("number-solutions");
-       //List<Solution> recentSolutions = SolutionDAO.findRecent(Integer.valueOf(numbersSolution));
-       List<Solution> recentSolutions = SolutionDAO.findRecent(Integer.valueOf(2));
+        //List<Solution> recentSolutions = SolutionDAO.findRecent(Integer.valueOf(numbersSolution));
+        List<Solution> recentSolutions = SolutionDAO.findRecent(2);
 
         req.setAttribute("recentSolutions", recentSolutions);
 
         try {
-            Connection connection = SchoolConn.getConnection();
+
+           Connection connection = DbUtil.getConn();
+           //Connection connection = SchoolConn.getConnection();
 
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM solutions");
 
